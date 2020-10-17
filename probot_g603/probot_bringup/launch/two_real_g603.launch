@@ -1,34 +1,31 @@
 <?xml version="1.0"?>
 <launch>
-  <arg name="ns_1" default="/left" doc="namespace as a group"/>
-  <arg name="ns_2" default="/right" doc="namespace as a group"/>
-  <arg name="robot_ip_1" />
-  <arg name="robot_ip_2" />
+  <arg name="ns" default="g603" doc="namespace as a group"/>
+  <arg name="is_1" default="true"/>
+  <param name="g603_1/robot_ip_address" value="192.168.2.123"/>
+  <param name="g603_2/robot_ip_address" value="192.168.3.123"/>
 
-  <!--<arg name="show_rviz" default="true" />-->
-  <!--<arg name="no_gui_plan" default="false" />-->
-
-    <!-- startup 2 xarm5s in moveit -->
-  <group ns="$(arg ns_1)">
-    <remap from="/tf" to="$(arg ns_1)/tf" />
-    <remap from="/tf_static" to="$(arg ns_1)/tf_static" />
-    <include file="$(find probot_bringup)/launch/probot_g602_bringup.launch">
-      <arg name="sim" value="true"/>
-      <!--<arg name="robot_ip" value="$(arg robot_ip_1)"/>-->
-      <!--<arg name="show_rviz" value="$(arg show_rviz)"/>-->
-      <!--<arg name="no_gui_plan" value="$(arg no_gui_plan)"/>-->
-      <arg name="ext_ns" value="$(arg ns_1)" />
+  <group ns="$(arg ns)_1">
+    <!--<remap from="joint_trajectory_action" to="$(arg ns)_1/joint_trajectory_action" />-->
+    <remap from="/tf" to="$(arg ns)_1/tf" />
+    <remap from="/tf_static" to="$(arg ns)_1/tf_static" />
+    <include file="$(find probot_bringup)/launch/ns.launch">
+      <arg name="ns" value="$(arg ns)_1" />
+      <arg name="sim" value="false" />
+      <arg name="is_1" value="true"/>
     </include>
   </group>
 
-  <group ns="$(arg ns_2)">
-    <remap from="/tf" to="$(arg ns_2)/tf" />
-    <remap from="/tf_static" to="$(arg ns_2)/tf_static" />
-    <include file="$(find probot_bringup)/launch/probot_g602_bringup.launch">
-      <arg name="sim" value="true"/>
-      <arg name="ext_ns" value="$(arg ns_2)" />
+  <group ns="$(arg ns)_2">
+    <!--<remap from="joint_trajectory_action" to="$(arg ns)_2/joint_trajectory_action" />-->
+    <remap from="/tf" to="$(arg ns)_2/tf" />
+    <remap from="/tf_static" to="$(arg ns)_2/tf_static" />
+    <remap from="$(arg ns)/source_list" to="/source_list" />
+    <include file="$(find probot_bringup)/launch/ns.launch">
+      <arg name="ns" value="$(arg ns)_2" />
+      <arg name="sim" value="false" />
+      <arg name="is_1" value="false"/>
     </include>
   </group>
-
 
 </launch>
