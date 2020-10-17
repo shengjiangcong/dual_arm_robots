@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="dual_probot_g603" >
+  <xacro:arg name="prefix_1" default="L_" />
+  <xacro:arg name="prefix_2" default="R_" />
+
+  <xacro:include filename="$(find probot_description)/urdf/PROBOT_G603/macro_probot_g603.xacro" />
+
+  <!-- ground instead of world, for the arms to attach -->
+  <link name="ground" />
+
+  <!-- launch left arm -->
+  <xacro:arm_probot_g603 prefix="$(arg prefix_1)" attach_to="ground" xyz="0 0 0" rpy="0 0 0"/>
+
+  <!-- launch right arm -->
+  <xacro:arm_probot_g603 prefix="$(arg prefix_2)" attach_to="ground" xyz="0 0.8 0" rpy="0 0 0"/>
+
+</robot>
