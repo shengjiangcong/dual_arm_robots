@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="ns" default="g603" doc="namespace as a group"/>
+  <arg name="is_1" default="true"/>
+  <!--<param name="g602_2/robot_ip_address" value="192.168.2.123"/>-->
+
+  <group ns="$(arg ns)_1">
+    <!--<remap from="joint_trajectory_action" to="$(arg ns)_1/joint_trajectory_action" />-->
+    <remap from="/tf" to="$(arg ns)_1/tf" />
+    <remap from="/tf_static" to="$(arg ns)_1/tf_static" />
+    <include file="$(find probot_bringup)/launch/ns.launch">
+      <arg name="ns" value="$(arg ns)_1" />
+      <arg name="sim" value="true" />
+      <arg name="is_1" value="true"/>
+    </include>
+  </group>
+
+  <group ns="$(arg ns)_2">
+    <!--<remap from="joint_trajectory_action" to="$(arg ns)_2/joint_trajectory_action" />-->
+    <remap from="/tf" to="$(arg ns)_2/tf" />
+    <remap from="/tf_static" to="$(arg ns)_2/tf_static" />
+    <remap from="$(arg ns)/source_list" to="/source_list" />
+    <include file="$(find probot_bringup)/launch/ns.launch">
+      <arg name="ns" value="$(arg ns)_2" />
+      <arg name="sim" value="true" />
+      <arg name="is_1" value="false"/>
+    </include>
+  </group>
+
+</launch>

@@ -1,6 +1,7 @@
 <launch>
 
   <arg name="gazebo" default="false" />
+  <arg name="is_1" default="true"/>
 
   <!-- GDB Debug Option -->
   <arg name="debug" default="false" />
@@ -56,6 +57,7 @@
     <arg name="moveit_controller_manager" value="probot_g603" unless="$(arg fake_execution)"/>
     <arg name="moveit_controller_manager" value="fake" if="$(arg fake_execution)"/>
     <arg name="gazebo" value="$(arg gazebo)" />
+    <arg name="is_1" value="$(arg is_1)" />
   </include>
 
   <!-- Sensors Functionality -->

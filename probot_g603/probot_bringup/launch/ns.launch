@@ -1,0 +1,13 @@
+<launch>
+  <arg name="ns" default="" />
+  <arg name="sim" default="false" />
+  <arg name="robot_ip" default="192.168.2.123" />
+  <arg name="is_1" default="true"/>
+
+  <include file="$(find probot_bringup)/launch/probot_g603_bringup.launch">
+           <arg name="sim" value="$(arg sim)"/>
+           <arg name="ns" value="$(arg ns)"/>
+           <arg name="robot_ip" value="$(arg robot_ip)"/>
+           <arg name="is_1" value="$(arg is_1)"/>    
+  </include>
+</launch>

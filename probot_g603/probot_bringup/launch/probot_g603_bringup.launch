@@ -2,6 +2,7 @@
     <!-- The planning and execution components of MoveIt! configured to run -->
     <!-- using the ROS-Industrial interface. -->
     <param name="robot_type" value="g603"/>
+    <arg name="is_1" default="true"/>
 
     <!-- Non-standard joint names:
        - Create a file [robot_moveit_config]/config/joint_names.yaml
@@ -12,6 +13,7 @@
 
     <!-- the "sim" argument controls whether we connect to a Simulated or Real robot -->
     <!--  - if sim=false, a robot_ip argument is required -->
+    <arg name="ns"      default="g603" />
     <arg name="sim"      default="false" />
     <arg name="robot_ip" default="192.168.2.123"/>
     <arg name="sfu"  default="disable" /> 
@@ -34,6 +36,7 @@
 
     <include file="$(find probot_g603_moveit_config)/launch/move_group.launch">
         <arg name="publish_monitored_planning_scene" value="true" />
+        <arg name="is_1" value="$(arg is_1)" />
     </include>
 
     <!-- run the robot simulator and action interface nodes -->
