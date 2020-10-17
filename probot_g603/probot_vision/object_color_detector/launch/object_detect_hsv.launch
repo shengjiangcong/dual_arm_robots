@@ -1,0 +1,9 @@
+<launch>
+
+  <include file="$(find realsense2_camera)/launch/rs_camera.launch" />
+
+  <rosparam command="load" file="$(find object_color_detector)/config/vision_config.yaml" />
+
+  <node name="object_detector" pkg="object_color_detector" type="object_detector" output="screen" />
+
+</launch>

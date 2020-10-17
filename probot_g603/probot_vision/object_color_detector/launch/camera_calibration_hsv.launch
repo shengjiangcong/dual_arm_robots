@@ -1,0 +1,8 @@
+<launch>
+
+  <node name="scara_auto_calibration" pkg="object_color_detector" type="auto_calibration_hsv.py" output="screen">
+    <!-- load configuration -->
+    <param name="filename"  value="$(find object_color_detector)/config/vision_config.yaml" />
+  </node>
+
+</launch>

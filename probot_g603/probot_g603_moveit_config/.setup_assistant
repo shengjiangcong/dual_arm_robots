@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: probot_description
+    relative_path: urdf/PROBOT_G603/probot_g603.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/probot_g603.srdf
+  CONFIG:
+    author_name: Hu Chunxu
+    author_email: huchunxu@guyuehome.com
+    generated_timestamp: 1600882484

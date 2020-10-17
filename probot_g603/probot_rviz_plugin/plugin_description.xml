@@ -1,0 +1,59 @@
+<library path="lib/libprobot_rviz_plugin">
+
+  <class name="probot_rviz_plugin/Toolbar"
+         type="probot_rviz_plugin::ToolbarPanel"
+         base_class_type="rviz::Panel">
+    <description>
+      A panel widget for toolbar.
+    </description>
+  </class>
+
+  <class name="probot_rviz_plugin/SFUTool"
+         type="probot_rviz_plugin::SFUToolPanel"
+         base_class_type="rviz::Panel">
+    <description>
+      A panel widget for onekey sfu tool.
+    </description>
+  </class>
+
+  <class name="probot_rviz_plugin/Movement"
+         type="probot_rviz_plugin::MovementPanel"
+         base_class_type="rviz::Panel">
+    <description>
+      A panel widget allowing robot movement control.
+    </description>
+  </class>
+
+  <class name="probot_rviz_plugin/IO"
+         type="probot_rviz_plugin::IOPanel"
+         base_class_type="rviz::Panel">
+    <description>
+      A panel widget for IO.
+    </description>
+  </class>
+  
+  <class name="probot_rviz_plugin/ConfigPanel"
+         type="probot_rviz_plugin::ConfigPanel"
+         base_class_type="rviz::Panel">
+    <description>
+      A panel widget allowing system configuration.
+    </description>
+  </class>
+
+  <class name="probot_rviz_plugin/Console"
+         type="probot_rviz_plugin::ConsolePanel"
+         base_class_type="rviz::Panel">
+    <description>
+      A panel widget for console.
+    </description>
+  </class>
+
+  <class name="probot_rviz_plugin/Demo"
+         type="probot_rviz_plugin::DemoPanel"
+         base_class_type="rviz::Panel">
+    <description>
+      A panel widget for demo.
+    </description>
+  </class>
+
+</library>
