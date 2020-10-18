@@ -37,13 +37,13 @@ class MoveItIkDemo:
         rospy.Subscriber("/probot_controller_ctrl", ControllerCtrl, callback)
                 
         # 初始化需要使用move group控制的机械臂中的arm group
-        arm = moveit_commander.MoveGroupCommander('manipulator')
+        arm = moveit_commander.MoveGroupCommander('L_manipulator')
                 
         # 获取终端link的名称
         end_effector_link = arm.get_end_effector_link()
                         
         # 设置目标位置所使用的参考坐标系
-        reference_frame = 'base_link'
+        reference_frame = 'L_base_link'
         arm.set_pose_reference_frame(reference_frame)
                 
         # 当运动规划失败后，允许重新规划
@@ -67,8 +67,8 @@ class MoveItIkDemo:
         target_pose = PoseStamped()
         target_pose.header.frame_id = reference_frame
         target_pose.header.stamp = rospy.Time.now()     
-        target_pose.pose.position.x = 0.261223
-        target_pose.pose.position.y = 0.165474
+        target_pose.pose.position.x = 0.38
+        target_pose.pose.position.y = 0
         target_pose.pose.position.z = 0.273714
         target_pose.pose.orientation.w = 1.0
         
@@ -80,14 +80,11 @@ class MoveItIkDemo:
         
         # 规划运动路径
         traj = arm.plan()
-        
+        n_points = len(traj.joint_trajectory.points) 
+        print(traj.joint_trajectory.points[n_points - 1].positions)
         # 按照规划的运动路径控制机械臂运动
         arm.execute(traj)
         rospy.sleep(1)
-           
-        # 控制机械臂回到初始化位置
-        arm.set_named_target('home')
-        arm.go()
 
         # 关闭并退出moveit
         moveit_commander.roscpp_shutdown()
