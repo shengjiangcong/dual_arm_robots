@@ -23,7 +23,7 @@
     <remap from="$(arg ns)/source_list" to="/source_list" />
     <include file="$(find probot_bringup)/launch/ns.launch">
       <arg name="ns" value="$(arg ns)_2" />
-      <arg name="sim" value="false" />
+      <arg name="sim" value="true" />
       <arg name="is_1" value="false"/>
     </include>
   </group>
