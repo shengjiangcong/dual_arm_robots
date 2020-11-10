@@ -1,0 +1,5 @@
+controller_list:
+  - name: ""
+    action_ns: joint_trajectory_action
+    type: FollowJointTrajectory
+    joints: [L_joint_1, L_joint_2, L_joint_3, L_joint_4, L_joint_5, L_joint_6, R_joint_1, R_joint_2, R_joint_3, R_joint_4, R_joint_5, R_joint_6]
