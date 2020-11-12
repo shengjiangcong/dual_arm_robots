@@ -13,5 +13,11 @@
 
   <!-- launch right arm -->
   <xacro:arm_probot_g603 prefix="$(arg prefix_2)" attach_to="ground" xyz="0 0.8 0" rpy="0 0 0"/>
-
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/</robotNamespace>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+      <legacyModeNS>true</legacyModeNS>
+    </plugin>
+  </gazebo>
 </robot>

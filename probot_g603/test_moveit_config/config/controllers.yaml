@@ -1,0 +1,32 @@
+controller_manager_ns: ''
+controller_list:
+  - name: larm_controller
+    joints:
+      - L_joint_1
+      - L_joint_2
+      - L_joint_3
+      - L_joint_4
+      - L_joint_5
+      - L_joint_6
+  - name: rarm_controller
+    joints:
+      - R_joint_1
+      - R_joint_2
+      - R_joint_3
+      - R_joint_4
+      - R_joint_5
+      - R_joint_6
+  - name: arms_controller
+    joints:
+      - L_joint_1
+      - L_joint_2
+      - L_joint_3
+      - L_joint_4
+      - L_joint_5
+      - L_joint_6
+      - R_joint_1
+      - R_joint_2
+      - R_joint_3
+      - R_joint_4
+      - R_joint_5
+      - R_joint_6

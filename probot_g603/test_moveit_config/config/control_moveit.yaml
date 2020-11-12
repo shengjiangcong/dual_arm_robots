@@ -1,0 +1,34 @@
+joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+group1_controller:
+    type: position_controllers/JointTrajectoryController
+    joints:
+      - L_joint_1
+      - L_joint_2
+      - L_joint_3
+      - L_joint_4
+      - L_joint_5
+      - L_joint_6
+group2_controller:
+    type: position_controllers/JointTrajectoryController
+    joints:
+      - R_joint_1
+      - R_joint_2
+      - R_joint_3
+      - R_joint_4
+      - R_joint_5
+      - R_joint_6
+gazebo_ros_control/pid_gains:
+      L_joint_1:   {p: 100, i: 0.01, d: 10.0}
+      L_joint_2:   {p: 100, i: 0.01, d: 10.0}
+      L_joint_3:   {p: 100, i: 0.01, d: 10.0}
+      L_joint_4:   {p: 100, i: 0.01, d: 10.0}
+      L_joint_5:   {p: 100, i: 0.01, d: 10.0}
+      L_joint_6:   {p: 100, i: 0.01, d: 10.0}
+      R_joint_1:   {p: 100, i: 0.01, d: 10.0}
+      R_joint_2:   {p: 100, i: 0.01, d: 10.0}
+      R_joint_3:   {p: 100, i: 0.01, d: 10.0}
+      R_joint_4:   {p: 100, i: 0.01, d: 10.0}
+      R_joint_5:   {p: 100, i: 0.01, d: 10.0}
+      R_joint_6:   {p: 100, i: 0.01, d: 10.0}

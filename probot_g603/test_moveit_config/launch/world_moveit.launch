@@ -1,0 +1,39 @@
+<launch>
+ 
+  <!-- these are the arguments you can pass this launch file, for example paused:=true -->
+  <arg name="world_name" default="worlds/empty.world"/>
+  <arg name="paused" default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+  <arg name="urdf_path" default="$(find probot_description)/urdf/PROBOT_G603/dual_probot_g603.xacro"/>
+
+  <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(arg world_name)"/>
+    <arg name="debug" value="$(arg debug)" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="headless" value="$(arg headless)"/>
+  </include>
+
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find probot_description)/urdf/PROBOT_G603/dual_probot_g603.xacro"/>
+
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -model pigot -param robot_description"/>
+
+    <!-- Load joint controller configurations from YAML file to parameter server -->
+    <rosparam file="$(find test_moveit_config)/config/control_moveit.yaml" command="load"/>
+
+    <!-- load the controllers -->
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" ns=" "
+    output="screen" args="group1_controller
+                          group2_controller"/>
+
+    <!-- convert joint states to TF transforms for rviz, etc -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
+      <!--<remap from="/joint_states" to="/ROBOT/joint_states" />-->
+    </node>
+
+</launch>
